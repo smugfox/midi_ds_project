@@ -1,0 +1,161 @@
+/** @type {import('tailwindcss').Config} */
+/*
+ * Tailwind is a thin presentation layer over the CSS custom properties
+ * defined in src/styles/tokens.css. All theme values reference
+ * `var(--…)` so the tokens remain the source of truth — change a variable
+ * and both utility classes and raw CSS pick it up.
+ */
+export default {
+  content: ["./index.html", "./src/**/*.{ts,tsx}"],
+  theme: {
+    extend: {
+      colors: {
+        // primitives
+        white: "var(--colors-basics-white)",
+        black: "var(--colors-basics-black)",
+        base: {
+          15: "var(--colors-base-15)",
+          25: "var(--colors-base-25)",
+          50: "var(--colors-base-50)",
+          100: "var(--colors-base-100)",
+          200: "var(--colors-base-200)",
+          300: "var(--colors-base-300)",
+          400: "var(--colors-base-400)",
+          500: "var(--colors-base-500)",
+          600: "var(--colors-base-600)",
+          700: "var(--colors-base-700)",
+          800: "var(--colors-base-800)",
+          900: "var(--colors-base-900)",
+          950: "var(--colors-base-950)",
+        },
+        brand: {
+          50: "var(--colors-brand-primary-50)",
+          100: "var(--colors-brand-primary-100)",
+          200: "var(--colors-brand-primary-200)",
+          400: "var(--colors-brand-primary-400)",
+          600: "var(--colors-brand-primary-600)",
+          "primaryt-200": "var(--colors-brand-primaryt-200)",
+        },
+        "brand-secondary": {
+          200: "var(--colors-brand-secondary-200)",
+          400: "var(--colors-brand-secondary-400)",
+          600: "var(--colors-brand-secondary-600)",
+        },
+        // semantic
+        text: {
+          primary: "var(--colors-text-primary)",
+          secondary: "var(--colors-text-secondary)",
+          "secondary-hover": "var(--colors-text-secondary-hover)",
+          tertiary: "var(--colors-text-tertiary)",
+          white: "var(--colors-text-white)",
+          "on-brand": "var(--colors-text-primary-on-brand)",
+        },
+        fg: {
+          primary: "var(--colors-fg-primary)",
+          secondary: "var(--colors-fg-secondary)",
+          "secondary-hover": "var(--colors-fg-secondary-hover)",
+          tertiary: "var(--colors-fg-tertiary)",
+          quaternary: "var(--colors-fg-quaternary)",
+          white: "var(--colors-fg-white)",
+          disabled: "var(--colors-fg-disabled)",
+          "disabled-subtle": "var(--colors-fg-disabled-subtle)",
+        },
+        bg: {
+          primary: "var(--colors-bg-primary)",
+          "primary-hover": "var(--colors-bg-primary-hover)",
+          secondary: "var(--colors-bg-secondary)",
+          "secondary-hover": "var(--colors-bg-secondary-hover)",
+          disabled: "var(--colors-bg-disabled)",
+        },
+        border: {
+          primary: "var(--colors-border-primary)",
+          secondary: "var(--colors-border-secondary)",
+          tertiary: "var(--colors-border-tertiary)",
+          "disabled-subtle": "var(--colors-border-disabled-subtle)",
+        },
+        "focus-ring": "var(--colors-focus-ring)",
+      },
+      borderWidth: {
+        // `border` (the default) and `border-token-1` both resolve to the
+        // CSS var so every border on the system reads from one place.
+        DEFAULT: "var(--border-width-1)",
+        "token-1": "var(--border-width-1)",
+      },
+      borderRadius: {
+        none: "var(--radius-none)",
+        xxs: "var(--radius-xxs)",
+        xs: "var(--radius-xs)",
+        sm: "var(--radius-sm)",
+        DEFAULT: "var(--radius-sm)",
+        md: "var(--radius-md)",
+        lg: "var(--radius-lg)",
+        xl: "var(--radius-xl)",
+        "2xl": "var(--radius-2xl)",
+        "3xl": "var(--radius-3xl)",
+        "4xl": "var(--radius-4xl)",
+        "5xl": "var(--radius-5xl)",
+        "6xl": "var(--radius-6xl)",
+        "7xl": "var(--radius-7xl)",
+        full: "var(--radius-full)",
+      },
+      spacing: {
+        "token-none": "var(--spacing-none)",
+        "token-xxxs": "var(--spacing-xxxs)",
+        "token-xxs": "var(--spacing-xxs)",
+        "token-xs": "var(--spacing-xs)",
+        "token-sm": "var(--spacing-sm)",
+        "token-md": "var(--spacing-md)",
+        "token-lg": "var(--spacing-lg)",
+        "token-xl": "var(--spacing-xl)",
+        "token-2xl": "var(--spacing-2xl)",
+        "token-3xl": "var(--spacing-3xl)",
+        "token-4xl": "var(--spacing-4xl)",
+        "token-5xl": "var(--spacing-5xl)",
+        "token-6xl": "var(--spacing-6xl)",
+        "token-7xl": "var(--spacing-7xl)",
+        "token-8xl": "var(--spacing-8xl)",
+        "token-9xl": "var(--spacing-9xl)",
+        "token-10xl": "var(--spacing-10xl)",
+        "token-11xl": "var(--spacing-11xl)",
+      },
+      fontFamily: {
+        display: "var(--font-family-display)",
+        body: "var(--font-family-body)",
+        sans: "var(--font-family-body)",
+      },
+      fontSize: {
+        "text-xxs": ["var(--font-size-text-xxs)", { lineHeight: "var(--line-height-text-xs)" }],
+        "text-xs": ["var(--font-size-text-xs)", { lineHeight: "var(--line-height-text-xs)" }],
+        "text-sm": ["var(--font-size-text-sm)", { lineHeight: "var(--line-height-text-sm)" }],
+        "text-md": ["var(--font-size-text-md)", { lineHeight: "var(--line-height-text-md)" }],
+        "text-lg": ["var(--font-size-text-lg)", { lineHeight: "var(--line-height-text-lg)" }],
+        "text-xl": ["var(--font-size-text-xl)", { lineHeight: "var(--line-height-text-xl)" }],
+        "display-xs": ["var(--font-size-display-xs)", { lineHeight: "var(--line-height-display-xs)" }],
+        "display-sm": ["var(--font-size-display-sm)", { lineHeight: "var(--line-height-display-sm)" }],
+        "display-md": ["var(--font-size-display-md)", { lineHeight: "var(--line-height-display-md)" }],
+        "display-lg": ["var(--font-size-display-lg)", { lineHeight: "var(--line-height-display-lg)" }],
+        "display-xl": ["var(--font-size-display-xl)", { lineHeight: "var(--line-height-display-xl)" }],
+        "display-2xl": ["var(--font-size-display-2xl)", { lineHeight: "var(--line-height-display-2xl)" }],
+      },
+      fontWeight: {
+        light: "var(--font-weight-light)",
+        regular: "var(--font-weight-regular)",
+        medium: "var(--font-weight-medium)",
+        semibold: "var(--font-weight-semibold)",
+        bold: "var(--font-weight-bold)",
+      },
+      boxShadow: {
+        xs: "var(--shadow-xs)",
+        "xs-skeuomorphic": "var(--shadow-xs-skeuomorphic)",
+        "focus-ring": "var(--shadow-focus-ring)",
+        "focus-ring-skeuomorphic": "var(--shadow-focus-ring-skeuomorphic)",
+        "focus-ring-tertiary": "var(--shadow-focus-ring-tertiary)",
+      },
+      maxWidth: {
+        "container-desktop": "var(--container-max-width-desktop)",
+        paragraph: "var(--width-paragraph)",
+      },
+    },
+  },
+  plugins: [],
+};

@@ -1,0 +1,277 @@
+/*
+ * Design tokens — generated from the Mini Design System Figma file.
+ * Single source of truth: these CSS custom properties. Tailwind theme in
+ * tailwind.config.js references them so utilities and raw CSS stay in sync.
+ *
+ * Naming mirrors the Figma variable paths to keep the MCP export output
+ * interoperable (e.g. `var(--colors-brand-primary-400)` not a renamed scheme).
+ *
+ * Known quirks preserved for fidelity (see AI-NOTES.md for detail):
+ *  - `primaryt-200` is a typo in the Figma source; aliased to `primary-200`.
+ *  - `focus-ring` is green (#b6e7a0) — intentional per source, flagged as
+ *    likely low-contrast on Primary blue buttons.
+ *  - `utility-brand-*` semantic tokens resolve to greys, not brand blue.
+ *  - `text-tertiary` is near-white (#eef5f7) — looks like a design bug.
+ */
+
+:root {
+  color-scheme: light;
+
+  /* ────────────────────────────────
+   * PRIMITIVES — Colors/Basics
+   * ──────────────────────────────── */
+  --colors-basics-white: #ffffff;
+  --colors-basics-black: #000000;
+  --colors-basics-transparent: #ffffff00;
+
+  /* Base / neutral ramp (cool-tinted greys) */
+  --colors-base-15: #eef5f7;
+  --colors-base-25: #e7f0f3;
+  --colors-base-50: #d3dde1;
+  --colors-base-100: #bdc8cc;
+  --colors-base-200: #a9b5ba;
+  --colors-base-300: #8998a1;
+  --colors-base-400: #6b7c88;
+  --colors-base-500: #4e6171;
+  --colors-base-600: #415465;
+  --colors-base-700: #344859;
+  --colors-base-800: #283c4e;
+  --colors-base-900: #1b2f43;
+  --colors-base-950: #0d2337;
+
+  /* Error / reds */
+  --colors-error-25: #fffbfa;
+  --colors-error-50: #fef3f2;
+  --colors-error-100: #fee4e2;
+  --colors-error-200: #fecdca;
+  --colors-error-300: #fda29b;
+  --colors-error-400: #f7615d;
+  --colors-error-500: #f04438;
+  --colors-error-600: #d92d20;
+  --colors-error-700: #b42318;
+  --colors-error-800: #912018;
+  --colors-error-900: #7a271a;
+  --colors-error-950: #55160c;
+
+  /* Warning / ambers */
+  --colors-warning-25: #fffcf5;
+  --colors-warning-50: #fffaeb;
+  --colors-warning-100: #fef0c7;
+  --colors-warning-200: #fedf89;
+  --colors-warning-300: #fec84b;
+  --colors-warning-400: #fdb022;
+  --colors-warning-500: #f79009;
+  --colors-warning-600: #dc6803;
+  --colors-warning-700: #b54708;
+  --colors-warning-800: #93370d;
+  --colors-warning-900: #7a2e0e;
+  --colors-warning-950: #4e1d09;
+
+  /* Success / greens */
+  --colors-success-25: #f6fef9;
+  --colors-success-50: #ecfdf3;
+  --colors-success-100: #dcfae6;
+  --colors-success-200: #abefc6;
+  --colors-success-300: #75e0a7;
+  --colors-success-400: #47cd89;
+  --colors-success-500: #17b26a;
+  --colors-success-600: #079455;
+  --colors-success-700: #067647;
+  --colors-success-800: #085d3a;
+  --colors-success-900: #074d31;
+  --colors-success-950: #053321;
+
+  /* Brand
+   * Figma ships 200/400/600 on the primary ramp. We extend it with 50 and
+   * 100 to support tonal selected-states on the Pill (and anywhere else
+   * a muted-brand tint is needed). Matches the step-granularity of Base. */
+  --colors-brand-primary-50: #eaf2ff;   /* added — lightest tint */
+  --colors-brand-primary-100: #d6e4ff;  /* added — used for Pill selected fill */
+  --colors-brand-primary-200: #88b8fb;
+  --colors-brand-primary-400: #579fff;
+  --colors-brand-primary-600: #006af9;
+  --colors-brand-primaryt-200: var(--colors-brand-primary-200); /* preserve Figma typo */
+  --colors-brand-secondary-200: #b6e7a0;
+  --colors-brand-secondary-400: #8edb6c;
+  --colors-brand-secondary-600: #69c940;
+
+  /* ────────────────────────────────
+   * SEMANTIC COLORS — Color modes / Light
+   * ──────────────────────────────── */
+  /* Text */
+  --colors-text-primary: #283c4e;        /* 900 */
+  --colors-text-secondary: #6b7c88;      /* 700 */
+  --colors-text-secondary-hover: #415465;
+  --colors-text-tertiary: #eef5f7;       /* ⚠ near-white — flagged */
+  --colors-text-white: #ffffff;
+  --colors-text-primary-on-brand: #ffffff;
+  --colors-text-secondary-on-brand: #e7f0f3;
+
+  /* Foreground */
+  --colors-fg-primary: #1b2f43;          /* 900 */
+  --colors-fg-secondary: #344859;        /* 700 */
+  --colors-fg-secondary-hover: #283c4e;
+  --colors-fg-tertiary: #415465;         /* 600 */
+  --colors-fg-tertiary-hover: #344859;
+  --colors-fg-quaternary: #8998a1;       /* 400 */
+  --colors-fg-quaternary-hover: #6b7c88;
+  --colors-fg-white: #ffffff;
+  --colors-fg-disabled: #bdc8cc;
+  --colors-fg-disabled-subtle: #d3dde1;
+
+  /* Background */
+  --colors-bg-primary: #eef5f7;
+  --colors-bg-primary-hover: #e7f0f3;
+  --colors-bg-secondary: #e7f0f3;
+  --colors-bg-secondary-hover: #d3dde1;
+  --colors-bg-disabled: #eef5f7;
+
+  /* Border */
+  --colors-border-primary: #8998a1;
+  --colors-border-secondary: #bdc8cc;
+  --colors-border-secondary-alt: #00000014;
+  --colors-border-tertiary: #d3dde1;
+  --colors-border-disabled-subtle: #eef5f7;
+
+  /* Effects / focus */
+  --colors-focus-ring: #b6e7a0;
+
+  /* Button icon slot colors */
+  --colors-button-primary-icon: #bdc8cc;
+  --colors-button-primary-icon-hover: #a9b5ba;
+  --colors-button-destructive-primary-icon: #fda29b;
+  --colors-button-destructive-primary-icon-hover: #fecdca;
+
+  /* Shadow primitive channels */
+  --colors-shadow-xs: rgba(10, 13, 18, 0.05);
+  --colors-shadow-skeuomorphic-inner: rgba(10, 13, 18, 0.05);
+  --colors-shadow-skeuomorphic-inner-border: rgba(10, 13, 18, 0.18);
+
+  /* Composed shadows (match Figma effect styles) */
+  --shadow-xs: 0 1px 2px 0 var(--colors-shadow-xs);
+  --shadow-xs-skeuomorphic:
+    0 1px 2px 0 var(--colors-shadow-xs),
+    inset 0 0 0 1px var(--colors-shadow-skeuomorphic-inner-border),
+    inset 0 -2px 0 0 var(--colors-shadow-skeuomorphic-inner);
+  --shadow-focus-ring: 0 0 0 2px var(--colors-focus-ring);
+  --shadow-focus-ring-skeuomorphic:
+    var(--shadow-xs-skeuomorphic),
+    0 0 0 2px var(--colors-focus-ring);
+  /* Tertiary-button-only "double ring": 2px white spacer + 4px green halo */
+  --shadow-focus-ring-tertiary:
+    0 0 0 2px var(--colors-bg-primary),
+    0 0 0 4px var(--colors-focus-ring);
+
+  /* ────────────────────────────────
+   * STROKES
+   * Named so borders can reference a token like any other system value.
+   * Mirrors the `border-width-1` variable we added to Figma in Phase 4.
+   * ──────────────────────────────── */
+  --border-width-1: 1px;
+
+  /* ────────────────────────────────
+   * RADIUS
+   * ──────────────────────────────── */
+  --radius-none: 0;
+  --radius-xxs: 2px;
+  --radius-xs: 4px;
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 10px;
+  --radius-xl: 12px;
+  --radius-2xl: 16px;
+  --radius-3xl: 20px;
+  --radius-4xl: 24px;
+  --radius-5xl: 28px;
+  --radius-6xl: 32px;
+  --radius-7xl: 36px;
+  --radius-full: 9999px;
+
+  /* ────────────────────────────────
+   * SPACING
+   * ──────────────────────────────── */
+  --spacing-none: 0;
+  --spacing-xxxs: 1px;
+  --spacing-xxs: 2px;
+  --spacing-xs: 4px;
+  --spacing-sm: 6px;
+  --spacing-md: 8px;
+  --spacing-lg: 12px;
+  --spacing-xl: 16px;
+  --spacing-2xl: 20px;
+  --spacing-3xl: 24px;
+  --spacing-4xl: 32px;
+  --spacing-5xl: 40px;
+  --spacing-6xl: 48px;
+  --spacing-7xl: 64px;
+  --spacing-8xl: 80px;
+  --spacing-9xl: 96px;
+  --spacing-10xl: 128px;
+  --spacing-11xl: 160px;
+
+  /* ────────────────────────────────
+   * WIDTHS / CONTAINERS
+   * ──────────────────────────────── */
+  --width-xxs: 320px;
+  --width-xs: 384px;
+  --width-sm: 480px;
+  --width-md: 560px;
+  --width-lg: 640px;
+  --width-xl: 768px;
+  --width-2xl: 1024px;
+  --width-3xl: 1280px;
+  --width-4xl: 1440px;
+  --width-5xl: 1600px;
+  --width-6xl: 1920px;
+  --width-paragraph: 720px;
+
+  --container-max-width-desktop: 1280px;
+  --container-padding-desktop: 32px;
+  --container-padding-mobile: 16px;
+
+  /* ────────────────────────────────
+   * TYPOGRAPHY
+   * ──────────────────────────────── */
+  /* Source file specifies "Test Söhne" (a licensed font). We fall back to a
+   * close neutral grotesk stack so the demo renders without the license.
+   * The Figma export we compared against uses DM Sans; we keep the same
+   * visual weight family here for parity with the playground instance. */
+  --font-family-display:
+    "Söhne", "Test Söhne", "DM Sans", ui-sans-serif, system-ui, -apple-system,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-family-body: var(--font-family-display);
+
+  /* Weight aliases kept as nominal names. The Figma file maps semibold→Bold
+   * and bold→Black on Söhne; we keep conventional numeric weights here so
+   * system fallbacks render sensibly. */
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  --font-size-text-xxs: 10px;
+  --font-size-text-xs: 12px;
+  --font-size-text-sm: 14px;
+  --font-size-text-md: 16px;
+  --font-size-text-lg: 18px;
+  --font-size-text-xl: 20px;
+  --font-size-display-xs: 24px;
+  --font-size-display-sm: 30px;
+  --font-size-display-md: 36px;
+  --font-size-display-lg: 48px;
+  --font-size-display-xl: 60px;
+  --font-size-display-2xl: 72px;
+
+  --line-height-text-xs: 18px;
+  --line-height-text-sm: 20px;
+  --line-height-text-md: 24px;
+  --line-height-text-lg: 28px;
+  --line-height-text-xl: 30px;
+  --line-height-display-xs: 32px;
+  --line-height-display-sm: 38px;
+  --line-height-display-md: 44px;
+  --line-height-display-lg: 60px;
+  --line-height-display-xl: 72px;
+  --line-height-display-2xl: 90px;
+}
