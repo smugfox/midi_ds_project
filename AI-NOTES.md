@@ -149,8 +149,9 @@ Used the Figma MCP plugin's `use_figma` tool to write a new page and component d
 - **Every `fontSize` and `lineHeight`** is bound to its typography variable. Font family and weight are not bound: the source file specifies `Test Söhne` which isn't installed on my machine, so DM Sans SemiBold (what the MCP export uses as fallback) is hardcoded.
 
 **Deliberate deviations I'm documenting:**
-- `#B8D0FF` on selected-hover has no matching variable. Left as a raw hex with a comment; if the treatment spreads beyond the Pill we'd formalize a `--pill-selected-bg-hover` semantic token or a `brand-primary-150` primitive.
 - Shadow-xs on the card uses a raw rgba rather than the `Colors/Effects/Shadows/shadow-xs` variable. Minor.
+
+**Follow-up after first review.** The user spotted that the selected-hover fill (`#B8D0FF`) was still a raw hex on one variant — I'd flagged it as an intentional one-off but they correctly pushed back that a DS shouldn't have hex escape-hatches. Formalized it as `Colors/Brand/Primary 150` in `_Primitives`, bound the Figma variant's fill, added `--colors-brand-primary-150` to `tokens.css`, and changed Pill.tsx's `hover:bg-[#b8d0ff]` to `hover:bg-brand-150`. The `brand` ramp now has six steps (50, 100, 150, 200, 400, 600) — three of them added by this project.
 
 ### Phase 5 — Write-up
 

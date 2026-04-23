@@ -87,6 +87,7 @@
    * a muted-brand tint is needed). Matches the step-granularity of Base. */
   --colors-brand-primary-50: #eaf2ff;   /* added — lightest tint */
   --colors-brand-primary-100: #d6e4ff;  /* added — used for Pill selected fill */
+  --colors-brand-primary-150: #b8d0ff;  /* added — Pill selected-hover fill */
   --colors-brand-primary-200: #88b8fb;
   --colors-brand-primary-400: #579fff;
   --colors-brand-primary-600: #006af9;

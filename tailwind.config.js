@@ -31,6 +31,7 @@ export default {
         brand: {
           50: "var(--colors-brand-primary-50)",
           100: "var(--colors-brand-primary-100)",
+          150: "var(--colors-brand-primary-150)",
           200: "var(--colors-brand-primary-200)",
           400: "var(--colors-brand-primary-400)",
           600: "var(--colors-brand-primary-600)",

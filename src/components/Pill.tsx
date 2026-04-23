@@ -25,10 +25,9 @@ export type PillProps = Omit<
  * `brand-primary-400` border. Chosen over a solid-brand fill so selected
  * pills don't visually compete with the Primary CTA.
  *
- * Hover on selected: we darken a shade (`#b8d0ff`). This is a one-off value
- * because the token ramp doesn't include a step between 100 and 200; if this
- * treatment spreads to other selectable components we'd formalize it as
- * `--colors-brand-primary-150` or a semantic `--pill-selected-bg-hover`.
+ * Hover on selected darkens to `brand-primary-150` (#B8D0FF), a token we
+ * introduced to fill the gap between `brand-primary-100` and
+ * `brand-primary-200`. Available in the Figma file under _Primitives too.
  */
 
 const base = [
@@ -53,7 +52,7 @@ const unselected = [
 
 const selected = [
   "bg-brand-100 border-brand-400 text-brand-600",
-  "hover:bg-[#b8d0ff]",
+  "hover:bg-brand-150",
 ].join(" ");
 
 export function Pill({
